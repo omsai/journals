@@ -1,0 +1,69 @@
+Version 2
+Title Mosaic Tools
+Rows 21
+Columns 1
+ButtonWidth 25
+DisplayKeybindings 0
+ProductId 1
+X 693
+Y 9
+Button Function
+Label Acquire
+Function jnlAcquire
+Application acquire
+Button Function
+Label Targeted Illumination
+Function jnlLaserControl
+Application mmproc
+Button Function
+Label Multi Dimensional Acquisition
+Function jnlNDimAcq
+Application ndacquir
+Button Unbound
+Button Journal
+Label Save Imaging Region
+Journal C:\MM\app\mmproc\journals\Mosaic As Illuminator\save image region.JNL
+Button Journal
+Label Load Imaging Region
+Journal C:\MM\app\mmproc\journals\Mosaic As Illuminator\load image region.JNL
+Button Journal
+Label Save Bleaching Region
+Journal C:\MM\app\mmproc\journals\Mosaic As Illuminator\save bleach region.JNL
+Button Journal
+Label Load Bleaching Region
+Journal C:\MM\app\mmproc\journals\Mosaic As Illuminator\load bleach region.JNL
+Button Unbound
+Button Journal
+Label Setup Mosaic Experiment
+Journal C:\MM\app\mmproc\journals\Mosaic As Illuminator\Setup Before Running Experiment.JNL
+Button Unbound
+Button Journal
+Label Clear All Regions
+Journal C:\MM\app\mmproc\journals\Mosaic journals\Clear all regions.jnl
+Button Journal
+Label Clear Current Overlays
+Journal C:\MM\app\mmproc\journals\MOSAIC JOURNALS\clear overlay.jnl
+Button Journal
+Label Update Mask
+Journal C:\MM\app\mmproc\journals\MOSAIC JOURNALS\update device mask.JNL
+Button Journal
+Label Laser -> Full Power
+Journal C:\MM\app\mmproc\journals\MOSAIC JOURNALS\Standy to Run.JNL
+Button Journal
+Label Laser -> Standby Power
+Journal C:\MM\app\mmproc\journals\MOSAIC JOURNALS\Run to Standby.JNL
+Button Unbound
+Button Function
+Label Save Image
+Function saveAsJNL
+Application mmproc
+Button Journal
+Label Save Regions with Image
+Journal C:\MM\app\mmproc\journals\Mosaic journals\Save Regions with Image.jnl
+Button Journal
+Label Load Regions for Image
+Journal C:\MM\app\mmproc\journals\Mosaic journals\Load Regions for Image.JNL
+Button Function
+Label Close All Images
+Function CloseAllJNL
+Application mmproc
