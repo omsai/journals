@@ -76,6 +76,12 @@ class Journal(object):
         ret += node.getAttributeNode('Expression').nodeValue
         return ret
     
+    def _TraceEntry(self, node):
+        ret = 'Trace('
+        ret += node.getAttributeNode('Expression').nodeValue
+        ret += ')'
+        return ret
+    
     description = property(_get_description)
     code = property(_get_code)
 
