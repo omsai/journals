@@ -99,6 +99,12 @@ class Journal(object):
             ret += getattr(self, '_' + entry.nodeName)(entry)
         return ret
     
+    def _RunJournalEntry(self,node):
+        ret = 'Run_Journal('
+        ret += node.getAttributeNode('JournalName').nodeValue
+        ret += ')'
+        return ret
+    
     description = property(_get_description)
     code = property(_get_code)
 
