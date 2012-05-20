@@ -49,32 +49,32 @@ class Journal(object):
     def _FunctionEntry(self, node):
         name = node.getAttributeNode('FunctionName').nodeValue
         name = name.replace(' ', '_')
-        func = name
-        func += '('
+        ret = name
+        ret += '('
         for entry in node.childNodes:
-            if func[-1] != '(':
-                func += ',\n'
-                func += ' ' * (len(name) + 1)
-            func += getattr(self, '_' + entry.nodeName)(entry)
-        func += ')'
-        return func
+            if ret[-1] != '(':
+                ret += ',\n'
+                ret += ' ' * (len(name) + 1)
+            ret += getattr(self, '_' + entry.nodeName)(entry)
+        ret += ')'
+        return ret
     
     def _Variable(self, node):
-        var = node.getAttributeNode('OverrideVariable').nodeValue
-        if var != '':
-            var += ' = '
+        ret = node.getAttributeNode('OverrideVariable').nodeValue
+        if ret != '':
+            ret += ' = '
         value = node.childNodes[0].data
         # String the leading number from the string
         value = value.split(' ', 1)
         if len(value) > 1:
-            var += value[1]
-        return var
+            ret += value[1]
+        return ret
     
     def _AssignVariableEntry(self, node):
-        var = node.getAttributeNode('VariableName').nodeValue
-        var += ' = '
-        var += node.getAttributeNode('Expression').nodeValue
-        return var
+        ret = node.getAttributeNode('VariableName').nodeValue
+        ret += ' = '
+        ret += node.getAttributeNode('Expression').nodeValue
+        return ret
     
     description = property(_get_description)
     code = property(_get_code)
