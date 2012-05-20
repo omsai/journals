@@ -75,11 +75,13 @@ class Journal(object):
             ret += ' = '
         if node.childNodes != []:
             value = node.childNodes[0].data
-            if node.getAttributeNode('OverrideVariable') == 'String':
+            print value
+            if node.getAttributeNode('Type') == 'String':
                 # String the leading number from the string
                 value = value.split(' ', 1)
                 ret += value[1]
-            ret += value
+            else:
+                ret += value
         return ret
     
     def _AssignVariableEntry(self, node):
