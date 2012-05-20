@@ -51,7 +51,7 @@ class Journal(object):
     def _CommentEntry(self, node):
         if node.childNodes == []:
             return ''
-        return '# ' + node.childNodes[0].data
+        return '# ' + '\n# '.join(wrap(node.childNodes[0].data, 76))
     
     def _FunctionEntry(self, node):
         name = node.getAttributeNode('FunctionName').nodeValue
