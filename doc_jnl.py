@@ -34,12 +34,19 @@ class Journal(object):
         cb = self._dom.getElementsByTagName('CodeBlock')[0].childNodes
         code = []
         for entry in cb:
-            try:
-                code.append( getattr(self, '_' + entry.nodeName)(entry) )
-            except AttributeError:
-                # simply write the entry name if not handled
-                code.append(entry.nodeName)
+            code.append( getattr(self, '_' + entry.nodeName)(entry) )
         return '\n'.join(code)
+    
+    def _CodeBlock(self, node):
+        condition = node.getAttributeNode('Condition').nodeValue
+        ret = ''
+        if condition == 'false':
+            ret += 'else:\n'
+        for entry in node.childNodes:
+            ret += ' ' * 4
+            ret += getattr(self, '_' + entry.nodeName)(entry)
+            ret += '\n'
+        return ret
     
     def _CommentEntry(self, node):
         if node.childNodes == []:
@@ -55,7 +62,7 @@ class Journal(object):
             if ret[-1] != '(':
                 ret += ',\n'
                 ret += ' ' * (len(name) + 1)
-            ret += getattr(self, '_' + entry.nodeName)(entry)
+                ret += getattr(self, '_' + entry.nodeName)(entry)
         ret += ')'
         return ret
     
@@ -80,6 +87,16 @@ class Journal(object):
         ret = 'Trace('
         ret += node.getAttributeNode('Expression').nodeValue
         ret += ')'
+        return ret
+    
+    def _IfThenElseEntry(self, node):
+        ret = 'if '
+        ret += node.getAttributeNode('Expression').nodeValue
+        ret += ':'
+        for entry in node.childNodes:
+            ret += ',\n'
+            ret += ' ' * 4
+            ret += getattr(self, '_' + entry.nodeName)(entry)
         return ret
     
     description = property(_get_description)
