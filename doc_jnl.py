@@ -55,26 +55,31 @@ class Journal(object):
     
     def _FunctionEntry(self, node):
         name = node.getAttributeNode('FunctionName').nodeValue
-        name = name.replace(' ', '_')
-        ret = name
+        ret = name.replace(' ', '_')
         ret += '('
         for entry in node.childNodes:
             if ret[-1] != '(':
                 ret += ',\n'
                 ret += ' ' * (len(name) + 1)
-                ret += getattr(self, '_' + entry.nodeName)(entry)
+            ret += getattr(self, '_' + entry.nodeName)(entry)
         ret += ')'
         return ret
     
     def _Variable(self, node):
-        ret = node.getAttributeNode('OverrideVariable').nodeValue
+        ret = ''
+        if node.getAttributeNode('OverrideVariable') == None:
+            ret = node.getAttributeNode('Name').nodeValue
+        else:
+            ret = node.getAttributeNode('OverrideVariable').nodeValue
         if ret != '':
             ret += ' = '
-        value = node.childNodes[0].data
-        # String the leading number from the string
-        value = value.split(' ', 1)
-        if len(value) > 1:
-            ret += value[1]
+        if node.childNodes != []:
+            value = node.childNodes[0].data
+            if node.getAttributeNode('OverrideVariable') == 'String':
+                # String the leading number from the string
+                value = value.split(' ', 1)
+                ret += value[1]
+            ret += value
         return ret
     
     def _AssignVariableEntry(self, node):
