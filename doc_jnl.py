@@ -75,7 +75,6 @@ class Journal(object):
             ret += ' = '
         if node.childNodes != []:
             value = node.childNodes[0].data
-            print value
             if node.getAttributeNode('Type') == 'String':
                 # String the leading number from the string
                 value = value.split(' ', 1)
