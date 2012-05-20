@@ -6,7 +6,8 @@ Add Region.jnl:
 '''
 Saves region in MDA directory
 '''
-Save_Regions()
+Save_Regions(MDA.Path+MDA.BaseName+".rgn" = 56 C:\MMpp\mmproc\journals\Mosaic As Illuminator	emp.rgn,
+             SaveRegionsJNL.saveImage = m	1 5 9 0 1 -1 -1 19 AVG subtract of SUM )
 ```
 
 Check Settings.JNL:
@@ -16,12 +17,13 @@ Save the ROIs used for Bleaching in the Mosaic Targeted Illumination
 Experiment to the same location as this journal, so that they may be loaded
 back again as needed.
 '''
-Save_Regions()
+Save_Regions(58 C:\MMpp\mmproc\journals\Mosaic As Illuminatorleach.rgn,
+             m	1 5 9 0 1 -1 -1 7 nD Snap )
 ```
 
 Clear All Regions.jnl:
 ```python
-Clear_All_Regions()
+Clear_All_Regions(ClearRegionsJNL.clearImage = m	1 5 9 0 1 -1 -1 21 Targeted Illumination)
 ```
 
 Load Region.JNL:
@@ -29,7 +31,8 @@ Load Region.JNL:
 '''
 New Journal
 '''
-Load_Regions()
+Load_Regions(Image.FileDrive+Image.FileDir+Image.FileName+".rgn" = 33 C:\Images\AVG subtract of SUM.rgn,
+             m	1 5 9 0 1 -1 -1 8 Untitled )
 ```
 
 MDA Action.JNL:
@@ -38,7 +41,15 @@ MDA Action.JNL:
 Action inside MDA
 '''
 if MDA.Status.TimePointNum=journal_time_point:,
-        Show_Message_and_Wait()
+        Show_Message_and_Wait(1,
+                      4,
+                      TRUE,
+                      18 Journal inside MDA,
+                      8 
+
+Bam!,
+                      15,
+                      16)
 ,
     else:
 
@@ -46,7 +57,8 @@ if MDA.Status.TimePointNum=journal_time_point:,
 
 Replace Region.jnl:
 ```python
-Save_Regions()
+Save_Regions(Image.FileDrive+Image.FileDir+Image.FileName+".rgn" = 56 C:\MMpp\mmproc\journals\Mosaic As Illuminator	emp.rgn,
+             SaveRegionsJNL.saveImage = m	1 5 9 0 1 -1 -1 19 AVG subtract of SUM )
 ```
 
 Review Data with Regions.JNL:
@@ -56,7 +68,8 @@ Save the ROIs used for Bleaching in the Mosaic Targeted Illumination
 Experiment to the same location as this journal, so that they may be loaded
 back again as needed.
 '''
-Save_Regions()
+Save_Regions(58 C:\MMpp\mmproc\journals\Mosaic As Illuminatorleach.rgn,
+             m	1 5 9 0 1 -1 -1 7 nD Snap )
 ```
 
 Set Time Point(s).JNL:
@@ -64,9 +77,25 @@ Set Time Point(s).JNL:
 '''
 Initialize variables for "MDA action" journal
 '''
-Run_Journal()
-Enter_Variable()
-Write_INI_String()
+Run_Journal(46 C:\MMpp\mmproc\journals\Mosaic\__startup.jnl)
+Enter_Variable(19 journal_time_point1,
+               3,
+               9 Setup MDA,
+               FALSE,
+               1,
+               65535,
+               1,
+               45 At which time point do you activate Region#1?,
+               24 %GRAYS%
+%COLOR%
+%BOTH%,
+               TRUE,
+               -1,
+               -1)
+Write_INI_String(IniPath = 24 C:\MM\MDA_experiment.INI,
+                 IniSection = 6 action,
+                 IniKey = 11 time_point1,
+                 Expression = 19 journal_time_point1)
 ```
 
 __startup.JNL:
@@ -76,7 +105,11 @@ Read INI settings
 '''
 
 # Read INI strings
-Get_INI_String()
+Get_INI_String(IniPath = 24 C:\MM\MDA_experiment.INI,
+               IniSection = 6 Action,
+               IniKey = 10 time_point,
+               DefaultValue = 1 5,
+               Variable = 18 journal_time_point)
 
 # Convert strings to numbers
 journal_time_point = VAL(journal_time_point)

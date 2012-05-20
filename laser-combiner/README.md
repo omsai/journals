@@ -8,18 +8,43 @@ Read INI file and apply all laser intensities
 '''
 
 # Read variables from INI file
-Get_INI_String()
-Get_INI_String()
-Get_INI_String()
-Get_INI_String()
-Get_INI_String()
+Get_INI_String(18 C:\MM\Confocal.INI,
+               17 Laser Intensities,
+               9 Laser_405,
+               1 0,
+               16 intensity_of_405)
+Get_INI_String(18 C:\MM\Confocal.INI,
+               17 Laser Intensities,
+               9 Laser_445,
+               1 0,
+               16 intensity_of_445)
+Get_INI_String(18 C:\MM\Confocal.INI,
+               17 Laser Intensities,
+               9 Laser_488,
+               1 0,
+               16 intensity_of_488)
+Get_INI_String(18 C:\MM\Confocal.INI,
+               17 Laser Intensities,
+               9 Laser_515,
+               1 0,
+               16 intensity_of_515)
+Get_INI_String(18 C:\MM\Confocal.INI,
+               17 Laser Intensities,
+               9 Laser_561,
+               1 0,
+               16 intensity_of_561)
 
 # Apply intensities to lasers
-Component_Control()
-Component_Control()
-Component_Control()
-Component_Control()
-Component_Control()
+Component_Control(Component Name = 29 ALC Laser 1 Intensity (405nm),
+                  intensity_of_405 = 0)
+Component_Control(Component Name = 30 ALC Laser 2 Intensity (445 nm),
+                  intensity_of_445 = 0)
+Component_Control(Component Name = 30 ALC Laser 3 Intensity (488 nm),
+                  intensity_of_488 = 0)
+Component_Control(Component Name = 30 ALC Laser 4 Intensity (515 nm),
+                  intensity_of_515 = 0)
+Component_Control(Component Name = 30 ALC Laser 5 Intensity (561 nm),
+                  intensity_of_561 = 0)
 ```
 
 laser_set_405_intensity.jnl:
@@ -30,16 +55,20 @@ INI file
 '''
 
 # Run journal which reads from INI file and applies all laser intensities
-Run_Journal()
+Run_Journal(55 C:\MMpp\mmproc\journals\laser_get_all_intensities.jnl)
 
 # Have the user set the correct laser intensity
-Component_Control()
+Component_Control(29 ALC Laser 1 Intensity (405nm),
+                  0)
 
 # Record the current intensity into a variable
 current_laser_intensity = Component.ALC_Laser_1_Intensity__405nm_.Position
 
 # Save this variable to INI file
-Write_INI_String()
+Write_INI_String(IniPath = 18 C:\MM\Confocal.INI,
+                 IniSection = 17 Laser Intensities,
+                 IniKey = 9 Laser_405,
+                 current_laser_intensity = 19 journal_time_point3)
 ```
 
 laser_set_445_intensity.jnl:
@@ -50,16 +79,20 @@ INI file
 '''
 
 # Run journal which reads from INI file and applies all laser intensities
-Run_Journal()
+Run_Journal(55 C:\MMpp\mmproc\journals\laser_get_all_intensities.jnl)
 
 # Have the user set the correct laser intensity
-Component_Control()
+Component_Control(30 ALC Laser 2 Intensity (445 nm),
+                  0)
 
 # Record the current intensity into a variable
 current_laser_intensity = Component.ALC_Laser_2_Intensity__445_nm_.Position
 
 # Save this variable to INI file
-Write_INI_String()
+Write_INI_String(IniPath = 18 C:\MM\Confocal.INI,
+                 IniSection = 17 Laser Intensities,
+                 IniKey = 9 Laser_445,
+                 current_laser_intensity = 19 journal_time_point3)
 ```
 
 laser_set_488_intensity.jnl:
@@ -70,16 +103,20 @@ INI file
 '''
 
 # Run journal which reads from INI file and applies all laser intensities
-Run_Journal()
+Run_Journal(55 C:\MMpp\mmproc\journals\laser_get_all_intensities.jnl)
 
 # Have the user set the correct laser intensity
-Component_Control()
+Component_Control(30 ALC Laser 3 Intensity (488 nm),
+                  0)
 
 # Record the current intensity into a variable
 current_laser_intensity = Component.ALC_Laser_3_Intensity__488_nm_.Position
 
 # Save this variable to INI file
-Write_INI_String()
+Write_INI_String(IniPath = 18 C:\MM\Confocal.INI,
+                 IniSection = 17 Laser Intensities,
+                 IniKey = 9 Laser_488,
+                 current_laser_intensity = 19 journal_time_point3)
 ```
 
 laser_set_515_intensity.jnl:
@@ -90,16 +127,20 @@ INI file
 '''
 
 # Run journal which reads from INI file and applies all laser intensities
-Run_Journal()
+Run_Journal(55 C:\MMpp\mmproc\journals\laser_get_all_intensities.jnl)
 
 # Have the user set the correct laser intensity
-Component_Control()
+Component_Control(30 ALC Laser 4 Intensity (515 nm),
+                  0)
 
 # Record the current intensity into a variable
 current_laser_intensity = Component.ALC_Laser_4_Intensity__515_nm_.Position
 
 # Save this variable to INI file
-Write_INI_String()
+Write_INI_String(IniPath = 18 C:\MM\Confocal.INI,
+                 IniSection = 17 Laser Intensities,
+                 IniKey = 9 Laser_515,
+                 current_laser_intensity = 19 journal_time_point3)
 ```
 
 laser_set_561_intensity.jnl:
@@ -110,14 +151,18 @@ INI file
 '''
 
 # Run journal which reads from INI file and applies all laser intensities
-Run_Journal()
+Run_Journal(55 C:\MMpp\mmproc\journals\laser_get_all_intensities.jnl)
 
 # Have the user set the correct laser intensity
-Component_Control()
+Component_Control(30 ALC Laser 5 Intensity (561 nm),
+                  0)
 
 # Record the current intensity into a variable
 current_laser_intensity = Component.ALC_Laser_5_Intensity__561_nm_.Position
 
 # Save this variable to INI file
-Write_INI_String()
+Write_INI_String(IniPath = 18 C:\MM\Confocal.INI,
+                 IniSection = 17 Laser Intensities,
+                 IniKey = 9 Laser_561,
+                 current_laser_intensity = 19 journal_time_point3)
 ```

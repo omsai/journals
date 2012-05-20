@@ -19,16 +19,51 @@ Mosaic for imaging after bleaching occurs.   \Mosaic as Illuminator\Prepare
 For Bleach.JNL is used to re-configure the Mosaic for bleaching at the time
 point prior to the bleach.
 '''
-Select_Illumination()
+Select_Illumination(FALSE,
+                    100,
+                    CurIllum = 10 GFP Mosaic)
 N = N+1
 if N=pulseTimePoint:,
         Run_Journal(C:\MMpp\mmproc\journals\Mosaic As Illuminator\Prepare For Recovery.JNL)
-    Configure_Stream_Acquisition()
-    Stream_Acquisition()
-    Add_Plane()
+    Configure_Stream_Acquisition(100,
+                             0,
+                             1,
+                             1,
+                             2,
+                             3,
+                             2,
+                             1,
+                             FALSE,
+                             3,
+                             3,
+                             3,
+                             FALSE,
+                             1,
+                             0  0  0  0  ,
+                             10 GFP Mosaic,
+                             0 ,
+                             FALSE,
+                             1,
+                             FALSE,
+                             1,
+                             1,
+                             FALSE,
+                             FALSE,
+                             0,
+                             ,
+                             ,
+                             ,
+                             ,
+                             ,
+                             )
+    Stream_Acquisition(m	1 2 9 2 1 -1 -1 8 Untitled )
+    Add_Plane(m	1 6 10 0 1 -1 -1 6 Stream ,
+          m	0 6 14 16 1 -1 -1 10 %CurIllum% ,
+          TRUE,
+          10)
 ,
     else:
-    Acquire()
+    Acquire(m	0 6 14 16 1 -1 -1 10 %CurIllum% )
 
 if N=pulseTimePoint-1:,
         Run_Journal(C:\MMpp\mmproc\journals\Mosaic As Illuminator\Prepare For Bleach.JNL)
@@ -54,14 +89,16 @@ imaging after bleaching occurs.   \Mosaic as Illuminator\Prepare For
 Bleach.JNL is used to re-configure the Mosaic for bleaching at the time point
 prior to the bleach.
 '''
-Select_Illumination()
+Select_Illumination(FALSE,
+                    100,
+                    CurIllum = 10 GFP Mosaic)
 N = N+1
 if N=pulseTimePoint:,
         Run_Journal(C:\MMpp\mmproc\journals\Mosaic As Illuminator\Prepare For Recovery.JNL)
 ,
     else:
 
-Acquire()
+Acquire(m	0 6 14 16 1 -1 -1 10 %CurIllum% )
 if N=(pulseTimePoint-1):,
         Run_Journal(C:\MMpp\mmproc\journals\Mosaic As Illuminator\Prepare For Bleach.JNL)
 ,
@@ -75,8 +112,9 @@ load bleach region.JNL:
 Load the ROI used for Bleaching for a targeted illumination experiment and
 update the current mask used for illumination.
 '''
-Load_Regions()
-Targeted_Illumination_Update_Mask()
+Load_Regions(58 C:\MMpp\mmproc\journals\Mosaic As Illuminatorleach.rgn,
+             m	1 5 9 0 1 -1 -1 8 Untitled )
+Targeted_Illumination_Update_Mask(3)
 ```
 
 load image region.JNL:
@@ -85,8 +123,9 @@ load image region.JNL:
 Load the ROIs used for Imaging with the Mosaic during targeted illumination,
 and update the mask to use the current regions.
 '''
-Load_Regions()
-Targeted_Illumination_Update_Mask()
+Load_Regions(57 C:\MMpp\mmproc\journals\Mosaic As Illuminator\image.rgn,
+             m	1 5 9 0 1 -1 -1 8 Untitled )
+Targeted_Illumination_Update_Mask(3)
 ```
 
 MDA with Mosaic as Illuminator.JNL:
@@ -111,7 +150,14 @@ prior to the bleach.
 CurIllum = Device.Illumination.Setting
 if MDA.Status.TimePointNum=pulseTimePoint:,
         Run_Journal(C:\MMpp\mmproc\journals\Mosaic As Illuminator\Prepare For Bleach.JNL)
-    Targeted_Illumination()
+    Targeted_Illumination(Illumination setting = 7 Mosaic ,
+                      Coordinate system setting = 3 60X,
+                      Position: setting (1=image coords, 2=center of active region, 3=all region centers) = 5,
+                      Position: image coordinate X = 100,
+                      Position: image coordinate Y = 100,
+                      Number of laser pulses = 1,
+                      Attenuator plate: % transmission = 5,
+                      pulseDuration = 1000)
     Run_Journal(C:\MMpp\mmproc\journals\Mosaic As Illuminator\Prepare For Recovery.JNL)
 ,
     else:
@@ -141,14 +187,18 @@ Mosaic's mask.
 # Delete current imaging region and load bleach target
 Delete_Active_Region()
 Run_Journal(C:\MMpp\mmproc\journals\Mosaic As Illuminator\load bleach region.JNL)
-Load_Regions()
-Targeted_Illumination_Update_Mask()
-# Toggle Laser Power illumination setting to get laser to full power. 
-Component_Control()
+Load_Regions(58 C:\MMpp\mmproc\journals\Mosaic As Illuminatorleach.rgn,
+             m	1 5 9 0 1 -1 -1 10 %CurIllum% )
+Targeted_Illumination_Update_Mask(3)
+# Toggle Laser Power illumination setting to get laser to full power.
+Component_Control(22 Laser Power as Shutter,
+                  -1)
 # Delay to get to full power
-Delay()
+Delay(200,
+      1)
 # Power will be up for 6 seconds, do bleach at END of 6 seconds
-Delay()
+Delay(6000-(pulseDuration+200) = 3,
+      1)
 ```
 
 Prepare For Recovery.JNL:
@@ -168,14 +218,16 @@ image region.jnl' is used to load the proper 'image.rgn' file - the ROIs that
 should be used for imaging.
 '''
 # Turn laser power back to standby
-Component_Control()
+Component_Control(22 Laser Power as Shutter,
+                  0)
 Delete_Active_Region()
 # Reset illumination setting for imaging in MDA experiment
 Device.Illumination.Setting = CurIllum
 # Reload imaging region
 Run_Journal(C:\MMpp\mmproc\journals\Mosaic As Illuminator\load image region.JNL)
-Load_Regions()
-Targeted_Illumination_Update_Mask()
+Load_Regions(57 C:\MMpp\mmproc\journals\Mosaic As Illuminator\image.rgn,
+             m	1 5 9 0 1 -1 -1 10 %CurIllum% )
+Targeted_Illumination_Update_Mask(3)
 ```
 
 save bleach region.JNL:
@@ -185,7 +237,8 @@ Save the ROIs used for Bleaching in the Mosaic Targeted Illumination
 Experiment to the same location as this journal, so that they may be loaded
 back again as needed.
 '''
-Save_Regions()
+Save_Regions(58 C:\MMpp\mmproc\journals\Mosaic As Illuminatorleach.rgn,
+             m	1 5 9 0 1 -1 -1 7 nD Snap )
 ```
 
 save image region.JNL:
@@ -195,7 +248,8 @@ Save the ROIs used for the Imaging portion of a Mosaic Targeted Illumination
 experiment to a file named 'image.rgn' in the same location as the journals so
 they can be loaded back again as needed.
 '''
-Save_Regions()
+Save_Regions(57 C:\MMpp\mmproc\journals\Mosaic As Illuminator\image.rgn,
+             m	1 5 9 0 1 -1 -1 7 nD Snap )
 ```
 
 Setup Before Running Experiment.JNL:
@@ -228,16 +282,58 @@ the end to ensure the experiment is ready to begin imaging.
 '''
 n = 0
 CurIllum = Device.Illumination.Setting
-Clear_All_Regions()
+Clear_All_Regions(m	1 5 9 0 1 -1 -1 8 Untitled )
 Run_Journal(C:\MMpp\mmproc\journals\Mosaic As Illuminator\load image region.JNL)
-Show_Message_and_Wait()
+Show_Message_and_Wait(1,
+                      30,
+                      FALSE,
+                      28 Mosaic Targeted Illumination,
+                      77 
+
+Use the Region Tools to draw the ROIs to be used for IMAGING your sample.,
+                      638,
+                      26)
 Run_Journal(C:\MMpp\mmproc\journals\Mosaic As Illuminator\save image region.JNL)
-Clear_All_Regions()
+Clear_All_Regions(m	1 5 9 0 1 -1 -1 8 Untitled )
 Run_Journal(C:\MMpp\mmproc\journals\Mosaic As Illuminator\load bleach region.JNL)
-Show_Message_and_Wait()
+Show_Message_and_Wait(1,
+                      30,
+                      FALSE,
+                      28 Mosaic Targeted Illumination,
+                      79 
+
+Use the Region Tools to draw the ROIs to be used for BLEACHING your sample.,
+                      637,
+                      26)
 Run_Journal(C:\MMpp\mmproc\journals\Mosaic As Illuminator\save bleach region.JNL)
-Clear_All_Regions()
+Clear_All_Regions(m	1 5 9 0 1 -1 -1 8 Untitled )
 Run_Journal(C:\MMpp\mmproc\journals\Mosaic As Illuminator\load image region.JNL)
-Enter_Variable()
-Enter_Variable()
+Enter_Variable(14 pulseTimePoint,
+               3,
+               28 Mosaic Targeted Illumination,
+               TRUE,
+               1,
+               65535,
+               1,
+               39 Before which time point are we pulsing?,
+               24 %GRAYS%
+%COLOR%
+%BOTH%,
+               TRUE,
+               -1,
+               -1)
+Enter_Variable(13 pulseDuration,
+               3,
+               29 Moasaic Targeted Illumination,
+               TRUE,
+               1,
+               6000,
+               1,
+               48 What is the duration of the laser pulse (in ms)?,
+               24 %GRAYS%
+%COLOR%
+%BOTH%,
+               TRUE,
+               -1,
+               -1)
 ```

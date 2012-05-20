@@ -41,42 +41,109 @@ CreateROIsForLaserApp.JNL:
 '''
 Create grid image and mask of ROI with the same image size as the original.
 '''
-# Populate bounding ROI with smaller ROIs to fill in region. Size of smaller ROIs is determined by size of grid boxes define in "Boxes on Binary Image" step. 
+# Populate bounding ROI with smaller ROIs to fill in region. Size of smaller
+# ROIs is determined by size of grid boxes define in "Boxes on Binary Image"
+# step.
 
 # Get mask of bounding ROI
-# Create a new binary image to draw the ROI which is the same size as the original. 
+# Create a new binary image to draw the ROI which is the same size as the
+# original.
 NewWidth = Image.Width
 NewHeight = Image.Height
-New()
-# Transfer region from original image to mask of bounding ROI. Clear region from original image. 
-Transfer_Regions()
-Paint_Region()
-Clear_Regions()
+New(NewWidth = 512,
+    NewHeight = 480,
+    Depth = 1,
+    Gray Value = 0,
+    11 BoundingROI,
+    m	0 6 9 17 1 -1 -1 3 New ,
+    0,
+    255,
+    255,
+    0,
+    0,
+    0)
+# Transfer region from original image to mask of bounding ROI. Clear region
+# from original image.
+Transfer_Regions(m	1 5 9 0 1 -1 -1 8 Untitled ,
+                 m	1 6 9 0 1 -1 -1 11 BoundingROI ,
+                 2,
+                 TRUE,
+                 FALSE)
+Paint_Region(m	1 6 9 0 1 -1 -1 11 BoundingROI ,
+             255,
+             751 0 5, 1 65535, 2 61 150, 3 0 0, 4 0, 5 1, 6 100 82 172 82 170 82 169 82 167 82 166 81 165 81 164 81 162 81 161 80 160 80 159 79 158 79 157 79 156 78 155 77 154 77 153 76 153 76 152 75 152 74 151 74 151 73 150 72 150 72 150 72 150 71 150 71 150 70 150 69 151 69 151 68 152 67 152 67 153 66 153 66 154 65 155 64 156 64 157 64 158 63 159 63 160 62 161 62 162 62 164 62 165 61 166 61 167 61 169 61 170 61 171 61 172 61 173 61 175 61 176 62 177 62 178 62 180 62 181 63 182 63 183 64 184 64 185 64 186 65 187 66 188 66 189 67 189 67 190 68 190 69 191 69 191 70 192 71 192 71 192 71 192 72 192 72 192 73 192 74 191 74 191 75 190 76 190 76 189 77 189 77 188 78 187 79 186 79 185 79 184 80 183 80 182 81 181 81 180 81 178 81 177 82 176 82 175 82 173 82 172, 7 1,
+             0,
+             0,
+             0,
+             2,
+             1,
+             FALSE,
+             FALSE,
+             0 )
+Clear_Regions(m	1 6 9 0 1 -1 -1 11 BoundingROI )
 
 # Create Grid image with same width and height dimensions as current at start
-New()
-# EDIT the next step (#6) to change the size of the grid boxes. 
-# Draw grid boxes.  
-Boxes_on_Binary_Image()
-# Invert grid so boxes are white and borders are black. 
-Morphological_Invert()
-Close()
+New(NewWidth = 1392,
+    NewHeight = 1040,
+    Depth = 1,
+    Gray Value = 0,
+    7 NewGrid,
+    m	0 6 9 17 1 -1 -1 3 New ,
+    0,
+    255,
+    255,
+    0,
+    0,
+    0)
+# EDIT the next step (#6) to change the size of the grid boxes.
+# Draw grid boxes.
+Boxes_on_Binary_Image(m	1 7 9 0 1 5 0 9 GridBoxes ,
+                      4,
+                      4,
+                      1,
+                      1,
+                      FALSE)
+# Invert grid so boxes are white and borders are black.
+Morphological_Invert(m	1 3 9 0 1 -1 -1 8 Untitled ,
+                     m	0 6 9 17 1 -1 -1 4 Grid )
+Close(m	1 7 9 0 1 5 0 8 Untitled ,
+      FALSE)
 
-# Use the Grid Mask and the Bounding ROI mask to populate bounding ROI with multiple regions. 
-Arithmetic()
-# Use an IMA state file that will exclude small objects that do not define a full grid box at the edge of the object
-Integrated_Morphometry_-_Load_State()
-Integrated_Morphometry_-_Measure()
-Create_Regions_Around_Objects()
-Resequence_Region_Labels()
+# Use the Grid Mask and the Bounding ROI mask to populate bounding ROI with
+# multiple regions.
+Arithmetic(8,
+           1,
+           0,
+           1,
+           1,
+           m	1 6 9 0 1 -1 -1 11 BoundingROI ,
+           m	1 6 9 0 1 -1 -1 4 grid ,
+           m	0 6 9 17 1 -1 -1 9 SmallROIs )
+# Use an IMA state file that will exclude small objects that do not define a
+# full grid box at the edge of the object
+Integrated_Morphometry_-_Load_State(m	1 3 9 0 1 -1 -1 3 AND ,
+                                    57 C:\MMpp\mmproc\journals\micropoint\AreaGreaterThan1.IMA)
+Integrated_Morphometry_-_Measure(m	1 3 9 0 1 -1 -1 3 AND ,
+                                 -1,
+                                 jnlMeasure.imMask = m	1 2 9 2 1 -1 -1 8 Untitled ,
+                                 jnlMeasure.bMeasureUsingMask = FALSE)
+Create_Regions_Around_Objects(m	1 3 9 0 1 -1 -1 8 Untitled )
+Resequence_Region_Labels(m	1 3 10 0 1 -1 -1 8 Untitled )
 
-# Transfer small ROIs to original image. 
-Transfer_Regions()
+# Transfer small ROIs to original image.
+Transfer_Regions(m	1 6 9 0 1 -1 -1 9 SmallROIs ,
+                 m	1 5 9 0 1 -1 -1 11 BoundingROI ,
+                 2,
+                 FALSE,
+                 FALSE)
 
-# Close intermediate images. 
-Close()
-Close()
-Close()
+# Close intermediate images.
+Close(m	1 6 9 0 1 -1 -1 11 BoundingROI ,
+      FALSE)
+Close(m	1 6 9 0 1 -1 -1 4 Grid ,
+      FALSE)
+Close(m	1 6 9 0 1 -1 -1 9 SmallROIs ,
+      FALSE)
 ```
 
 CreateSegmentROIs_deleteROI1.JNL:
@@ -86,12 +153,21 @@ Segment a line region along the center with smaller ROIs. Make sure region
 number 1 is the original line.
 '''
 # Edit next step to change the size of the box along the line
-Create_Segment_Regions()
-# Resequence so original line is always 1.  After creating segment ROI you sometimes get two ROIs with same number, #1.
-Resequence_Region_Labels()
+Create_Segment_Regions(m	1 5 9 0 1 -1 -1 8 Untitled ,
+                       5,
+                       5,
+                       0 ,
+                       4,
+                       FALSE,
+                       0 ,
+                       FALSE)
+# Resequence so original line is always 1.  After creating segment ROI you
+# sometimes get two ROIs with same number, #1.
+Resequence_Region_Labels(m	1 5 10 0 1 -1 -1 8 Untitled )
 # Delete original line region
-Select_Region()
+Select_Region(m	1 5 9 0 1 -1 -1 8 Untitled ,
+              1 1)
 Delete_Active_Region()
 # Resequence segmented ROIs
-Resequence_Region_Labels()
+Resequence_Region_Labels(m	1 5 10 0 1 -1 -1 8 Untitled )
 ```

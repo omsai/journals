@@ -10,7 +10,8 @@ Backup existing laser power,  and set laser increment
 # FIXME: Set this to whatever you want
 LASER_POWER_INCREMENT = 5
 
-# FIXME: Edit component name below to whichever laser device from main menu > Journal > Variables > Assign Variable > Program
+# FIXME: Edit component name below to whichever laser device from main menu >
+# Journal > Variables > Assign Variable > Program
 original_laser_power = Component.Ti_TIRF_Angle.Position
 
 # Debugging
@@ -24,16 +25,20 @@ Journal action inside MDA --- use Type = "Multiple timepoints",  and e.g.
 Initial Point = 30, Interval = 30
 '''
 
-# FIXME: Edit component name below to whichever laser device from main menu > Journal > Variables > Assign Variable > Program
+# FIXME: Edit component name below to whichever laser device from main menu >
+# Journal > Variables > Assign Variable > Program
 current_laser_power = Component.Ti_TIRF_Angle.Position
 
 new_laser_power = current_laser_power + LASER_POWER_INCREMENT
 
-# FIXME: Double-click Component Control below and change to whichever device you need
-Component_Control()
+# FIXME: Double-click Component Control below and change to whichever device
+# you need
+Component_Control(Component Name = 13 Ti TIRF Angle,
+                  new_laser_power = 295)
 
 # Debugging
-# FIXME: Edit component name below to whichever laser device from main menu > Journal > Variables > Assign Variable > Program
+# FIXME: Edit component name below to whichever laser device from main menu >
+# Journal > Variables > Assign Variable > Program
 Trace(Component.Ti_TIRF_Angle.Position)
 ```
 
@@ -43,6 +48,8 @@ _03_complete.JNL:
 Restore original laser power
 '''
 
-# FIXME: Double-click Component Control below and change to whichever device you need
-Component_Control()
+# FIXME: Double-click Component Control below and change to whichever device
+# you need
+Component_Control(Component Name = 13 Ti TIRF Angle,
+                  original_laser_power = 0)
 ```
