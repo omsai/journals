@@ -103,9 +103,10 @@ if __name__ == '__main__':
     # Recurse first-level directories for journal files
     for dir in jnl_directories(curdir):
         print('Entering directory {0}...'.format(dir))
-        doc = []
+        doc = ['']
         doc.append(WARNING)
-        doc.append('### Source Code')
+        doc.append('Source Code')
+        doc.append('-----------')
         for file in jnl_files(dir):
             print('  {0}'.format(file))
             doc.append('{0}:'.format(file))
