@@ -84,9 +84,10 @@ def jnl_as_strings(filename):
     """ Write journal object into string list """
     jnl = Journal(filename)
     out = []
-    out.append("'''")
-    out.append('\n'.join(wrap(jnl.description, 78)))
-    out.append("'''")
+    if jnl.description != '':
+        out.append("'''")
+        out.append('\n'.join(wrap(jnl.description, 78)))
+        out.append("'''")
     out.append(jnl.code)
     return out
 
