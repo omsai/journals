@@ -6,7 +6,7 @@ Add Region.jnl:
 '''
 Saves region in MDA directory
 '''
-Save_Regions(MDA.Path+MDA.BaseName+".rgn" = 56 C:\MMpp\mmproc\journals\Mosaic As Illuminator	emp.rgn,
+Save_Regions(MDA.Path+MDA.BaseName+".rgn" = 56 C:\MM\app\mmproc\journals\Mosaic As Illuminator\temp.rgn,
              SaveRegionsJNL.saveImage = m	1 5 9 0 1 -1 -1 19 AVG subtract of SUM )
 ```
 
@@ -17,7 +17,7 @@ Save the ROIs used for Bleaching in the Mosaic Targeted Illumination
 Experiment to the same location as this journal, so that they may be loaded
 back again as needed.
 '''
-Save_Regions(58 C:\MMpp\mmproc\journals\Mosaic As Illuminatorleach.rgn,
+Save_Regions(58 C:\MM\app\mmproc\journals\Mosaic As Illuminator\bleach.rgn,
              m	1 5 9 0 1 -1 -1 7 nD Snap )
 ```
 
@@ -57,7 +57,7 @@ Bam!,
 
 Replace Region.jnl:
 ```python
-Save_Regions(Image.FileDrive+Image.FileDir+Image.FileName+".rgn" = 56 C:\MMpp\mmproc\journals\Mosaic As Illuminator	emp.rgn,
+Save_Regions(Image.FileDrive+Image.FileDir+Image.FileName+".rgn" = 56 C:\MM\app\mmproc\journals\Mosaic As Illuminator\temp.rgn,
              SaveRegionsJNL.saveImage = m	1 5 9 0 1 -1 -1 19 AVG subtract of SUM )
 ```
 
@@ -68,7 +68,7 @@ Save the ROIs used for Bleaching in the Mosaic Targeted Illumination
 Experiment to the same location as this journal, so that they may be loaded
 back again as needed.
 '''
-Save_Regions(58 C:\MMpp\mmproc\journals\Mosaic As Illuminatorleach.rgn,
+Save_Regions(58 C:\MM\app\mmproc\journals\Mosaic As Illuminator\bleach.rgn,
              m	1 5 9 0 1 -1 -1 7 nD Snap )
 ```
 
@@ -77,7 +77,7 @@ Set Time Point(s).JNL:
 '''
 Initialize variables for "MDA action" journal
 '''
-Run_Journal(46 C:\MMpp\mmproc\journals\Mosaic\__startup.jnl)
+Run_Journal(46 C:\MM\app\mmproc\journals\Mosaic\__startup.jnl)
 Enter_Variable(19 journal_time_point1,
                3,
                9 Setup MDA,

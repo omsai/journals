@@ -153,10 +153,14 @@ if __name__ == '__main__':
         doc = '\n'.join(doc)
         
         # Check if README already has doc
-        doc_pattern = compile(WARNING + '.*', DOTALL)
-        with open(dir + sep + 'README.md', 'r') as f:
-            readme = f.read()
-            match_result = search(doc_pattern, readme)
+        try:
+            doc_pattern = compile(WARNING + '.*', DOTALL)
+            with open(dir + sep + 'README.md', 'r') as f:
+                readme = f.read()
+                match_result = search(doc_pattern, readme)
+        except IOError:
+            # No file exists
+            match_result = None
         
         # Update README as necessary
         if match_result == None:
@@ -164,15 +168,11 @@ if __name__ == '__main__':
                 f.write(doc)
             print('... created')
         else:
-            try:
-                readme_updated = doc_pattern.sub(doc, readme)
-            except:
-                # FIXME #3: invalid group reference from lib/sre_parse.pyc
-                pass
-            if readme_updated == readme:
+            if match_result.group(0) == doc:
                 print('... up-to-date')
             else:
                 with open(dir + sep + 'README.md', 'w') as f:
-                    f.write(readme_updated)
+                    f.write(match_result.string[:match_result.start(0)-1]
+                            + doc)
                 print('... updated')
         print('')

@@ -24,7 +24,7 @@ Select_Illumination(FALSE,
                     CurIllum = 10 GFP Mosaic)
 N = N+1
 if N=pulseTimePoint:,
-        Run_Journal(C:\MMpp\mmproc\journals\Mosaic As Illuminator\Prepare For Recovery.JNL)
+        Run_Journal(C:\MM\app\mmproc\journals\Mosaic As Illuminator\Prepare For Recovery.JNL)
     Configure_Stream_Acquisition(100,
                              0,
                              1,
@@ -66,7 +66,7 @@ if N=pulseTimePoint:,
     Acquire(m	0 6 14 16 1 -1 -1 10 %CurIllum% )
 
 if N=pulseTimePoint-1:,
-        Run_Journal(C:\MMpp\mmproc\journals\Mosaic As Illuminator\Prepare For Bleach.JNL)
+        Run_Journal(C:\MM\app\mmproc\journals\Mosaic As Illuminator\Prepare For Bleach.JNL)
 ,
     else:
 
@@ -94,13 +94,13 @@ Select_Illumination(FALSE,
                     CurIllum = 10 GFP Mosaic)
 N = N+1
 if N=pulseTimePoint:,
-        Run_Journal(C:\MMpp\mmproc\journals\Mosaic As Illuminator\Prepare For Recovery.JNL)
+        Run_Journal(C:\MM\app\mmproc\journals\Mosaic As Illuminator\Prepare For Recovery.JNL)
 ,
     else:
 
 Acquire(m	0 6 14 16 1 -1 -1 10 %CurIllum% )
 if N=(pulseTimePoint-1):,
-        Run_Journal(C:\MMpp\mmproc\journals\Mosaic As Illuminator\Prepare For Bleach.JNL)
+        Run_Journal(C:\MM\app\mmproc\journals\Mosaic As Illuminator\Prepare For Bleach.JNL)
 ,
     else:
 
@@ -112,7 +112,7 @@ load bleach region.JNL:
 Load the ROI used for Bleaching for a targeted illumination experiment and
 update the current mask used for illumination.
 '''
-Load_Regions(58 C:\MMpp\mmproc\journals\Mosaic As Illuminatorleach.rgn,
+Load_Regions(58 C:\MM\app\mmproc\journals\Mosaic As Illuminator\bleach.rgn,
              m	1 5 9 0 1 -1 -1 8 Untitled )
 Targeted_Illumination_Update_Mask(3)
 ```
@@ -123,7 +123,7 @@ load image region.JNL:
 Load the ROIs used for Imaging with the Mosaic during targeted illumination,
 and update the mask to use the current regions.
 '''
-Load_Regions(57 C:\MMpp\mmproc\journals\Mosaic As Illuminator\image.rgn,
+Load_Regions(57 C:\MM\app\mmproc\journals\Mosaic As Illuminator\image.rgn,
              m	1 5 9 0 1 -1 -1 8 Untitled )
 Targeted_Illumination_Update_Mask(3)
 ```
@@ -149,7 +149,7 @@ prior to the bleach.
 # Get current MDA wavelength illumination name
 CurIllum = Device.Illumination.Setting
 if MDA.Status.TimePointNum=pulseTimePoint:,
-        Run_Journal(C:\MMpp\mmproc\journals\Mosaic As Illuminator\Prepare For Bleach.JNL)
+        Run_Journal(C:\MM\app\mmproc\journals\Mosaic As Illuminator\Prepare For Bleach.JNL)
     Targeted_Illumination(Illumination setting = 7 Mosaic ,
                       Coordinate system setting = 3 60X,
                       Position: setting (1=image coords, 2=center of active region, 3=all region centers) = 5,
@@ -158,7 +158,7 @@ if MDA.Status.TimePointNum=pulseTimePoint:,
                       Number of laser pulses = 1,
                       Attenuator plate: % transmission = 5,
                       pulseDuration = 1000)
-    Run_Journal(C:\MMpp\mmproc\journals\Mosaic As Illuminator\Prepare For Recovery.JNL)
+    Run_Journal(C:\MM\app\mmproc\journals\Mosaic As Illuminator\Prepare For Recovery.JNL)
 ,
     else:
 
@@ -186,8 +186,8 @@ Mosaic's mask.
 '''
 # Delete current imaging region and load bleach target
 Delete_Active_Region()
-Run_Journal(C:\MMpp\mmproc\journals\Mosaic As Illuminator\load bleach region.JNL)
-Load_Regions(58 C:\MMpp\mmproc\journals\Mosaic As Illuminatorleach.rgn,
+Run_Journal(C:\MM\app\mmproc\journals\Mosaic As Illuminator\load bleach region.JNL)
+Load_Regions(58 C:\MM\app\mmproc\journals\Mosaic As Illuminator\bleach.rgn,
              m	1 5 9 0 1 -1 -1 10 %CurIllum% )
 Targeted_Illumination_Update_Mask(3)
 # Toggle Laser Power illumination setting to get laser to full power.
@@ -224,8 +224,8 @@ Delete_Active_Region()
 # Reset illumination setting for imaging in MDA experiment
 Device.Illumination.Setting = CurIllum
 # Reload imaging region
-Run_Journal(C:\MMpp\mmproc\journals\Mosaic As Illuminator\load image region.JNL)
-Load_Regions(57 C:\MMpp\mmproc\journals\Mosaic As Illuminator\image.rgn,
+Run_Journal(C:\MM\app\mmproc\journals\Mosaic As Illuminator\load image region.JNL)
+Load_Regions(57 C:\MM\app\mmproc\journals\Mosaic As Illuminator\image.rgn,
              m	1 5 9 0 1 -1 -1 10 %CurIllum% )
 Targeted_Illumination_Update_Mask(3)
 ```
@@ -237,7 +237,7 @@ Save the ROIs used for Bleaching in the Mosaic Targeted Illumination
 Experiment to the same location as this journal, so that they may be loaded
 back again as needed.
 '''
-Save_Regions(58 C:\MMpp\mmproc\journals\Mosaic As Illuminatorleach.rgn,
+Save_Regions(58 C:\MM\app\mmproc\journals\Mosaic As Illuminator\bleach.rgn,
              m	1 5 9 0 1 -1 -1 7 nD Snap )
 ```
 
@@ -248,7 +248,7 @@ Save the ROIs used for the Imaging portion of a Mosaic Targeted Illumination
 experiment to a file named 'image.rgn' in the same location as the journals so
 they can be loaded back again as needed.
 '''
-Save_Regions(57 C:\MMpp\mmproc\journals\Mosaic As Illuminator\image.rgn,
+Save_Regions(57 C:\MM\app\mmproc\journals\Mosaic As Illuminator\image.rgn,
              m	1 5 9 0 1 -1 -1 7 nD Snap )
 ```
 
@@ -283,7 +283,7 @@ the end to ensure the experiment is ready to begin imaging.
 n = 0
 CurIllum = Device.Illumination.Setting
 Clear_All_Regions(m	1 5 9 0 1 -1 -1 8 Untitled )
-Run_Journal(C:\MMpp\mmproc\journals\Mosaic As Illuminator\load image region.JNL)
+Run_Journal(C:\MM\app\mmproc\journals\Mosaic As Illuminator\load image region.JNL)
 Show_Message_and_Wait(1,
                       30,
                       FALSE,
@@ -293,9 +293,9 @@ Show_Message_and_Wait(1,
 Use the Region Tools to draw the ROIs to be used for IMAGING your sample.,
                       638,
                       26)
-Run_Journal(C:\MMpp\mmproc\journals\Mosaic As Illuminator\save image region.JNL)
+Run_Journal(C:\MM\app\mmproc\journals\Mosaic As Illuminator\save image region.JNL)
 Clear_All_Regions(m	1 5 9 0 1 -1 -1 8 Untitled )
-Run_Journal(C:\MMpp\mmproc\journals\Mosaic As Illuminator\load bleach region.JNL)
+Run_Journal(C:\MM\app\mmproc\journals\Mosaic As Illuminator\load bleach region.JNL)
 Show_Message_and_Wait(1,
                       30,
                       FALSE,
@@ -305,9 +305,9 @@ Show_Message_and_Wait(1,
 Use the Region Tools to draw the ROIs to be used for BLEACHING your sample.,
                       637,
                       26)
-Run_Journal(C:\MMpp\mmproc\journals\Mosaic As Illuminator\save bleach region.JNL)
+Run_Journal(C:\MM\app\mmproc\journals\Mosaic As Illuminator\save bleach region.JNL)
 Clear_All_Regions(m	1 5 9 0 1 -1 -1 8 Untitled )
-Run_Journal(C:\MMpp\mmproc\journals\Mosaic As Illuminator\load image region.JNL)
+Run_Journal(C:\MM\app\mmproc\journals\Mosaic As Illuminator\load image region.JNL)
 Enter_Variable(14 pulseTimePoint,
                3,
                28 Mosaic Targeted Illumination,

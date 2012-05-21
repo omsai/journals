@@ -55,7 +55,7 @@ INI file
 '''
 
 # Run journal which reads from INI file and applies all laser intensities
-Run_Journal(55 C:\MMpp\mmproc\journals\laser_get_all_intensities.jnl)
+Run_Journal(55 C:\MM\app\mmproc\journals\laser_get_all_intensities.jnl)
 
 # Have the user set the correct laser intensity
 Component_Control(29 ALC Laser 1 Intensity (405nm),
@@ -79,7 +79,7 @@ INI file
 '''
 
 # Run journal which reads from INI file and applies all laser intensities
-Run_Journal(55 C:\MMpp\mmproc\journals\laser_get_all_intensities.jnl)
+Run_Journal(55 C:\MM\app\mmproc\journals\laser_get_all_intensities.jnl)
 
 # Have the user set the correct laser intensity
 Component_Control(30 ALC Laser 2 Intensity (445 nm),
@@ -103,7 +103,7 @@ INI file
 '''
 
 # Run journal which reads from INI file and applies all laser intensities
-Run_Journal(55 C:\MMpp\mmproc\journals\laser_get_all_intensities.jnl)
+Run_Journal(55 C:\MM\app\mmproc\journals\laser_get_all_intensities.jnl)
 
 # Have the user set the correct laser intensity
 Component_Control(30 ALC Laser 3 Intensity (488 nm),
@@ -127,7 +127,7 @@ INI file
 '''
 
 # Run journal which reads from INI file and applies all laser intensities
-Run_Journal(55 C:\MMpp\mmproc\journals\laser_get_all_intensities.jnl)
+Run_Journal(55 C:\MM\app\mmproc\journals\laser_get_all_intensities.jnl)
 
 # Have the user set the correct laser intensity
 Component_Control(30 ALC Laser 4 Intensity (515 nm),
@@ -151,7 +151,7 @@ INI file
 '''
 
 # Run journal which reads from INI file and applies all laser intensities
-Run_Journal(55 C:\MMpp\mmproc\journals\laser_get_all_intensities.jnl)
+Run_Journal(55 C:\MM\app\mmproc\journals\laser_get_all_intensities.jnl)
 
 # Have the user set the correct laser intensity
 Component_Control(30 ALC Laser 5 Intensity (561 nm),
