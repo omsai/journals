@@ -3,7 +3,7 @@ Adjust selected illumination laser intensity
 
 Necessity
 ---------
-To change the laser intensity of a channel, Metamorph 7 is cumbersome:
+Changing the laser intensity of a channel in Metamorph 7 is cumbersome:
 
 1.  Open the "Devices > Configure Illumination" window
 2.  Find the slider from the list of all device properties
