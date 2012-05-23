@@ -1,5 +1,5 @@
-Laser Combiner
-==============
+Adjust selected illumination laser intensity
+============================================
 
 Necessity
 ---------
