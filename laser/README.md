@@ -41,8 +41,11 @@ Installation
     of the channel name like "Confocal 488" or "TIRF640"
 3.  Check "Run journal when changing illumination setting" for each laser
     illumination.
-4.  (Optional, but strongly recommended) Run "Show Values" button and setup
-    default laser values for all laser illuminations.
+4.  (Optional, but required for next step) Test INI file writing by running
+    "Set Intensity" created in step 1    
+5.  (Optional) Order the illuminations in a human readable format, otherwise settings
+    get added ad-hoc and it's difficult to read the file.  To do this, run "Show 
+    Values" button and set default laser key-value pairs for all laser illuminations.
 
 User interaction
 ----------------
