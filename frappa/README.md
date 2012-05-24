@@ -26,7 +26,7 @@ as follows:
 3.  Finally `_mda_pulse.jnl` action in the protocol will be able to override the
     "Coordinate system setting" with Device.Magnification.Setting
 
-Backport FRAPPA systems
+Rear port FRAPPA systems
 -----------------------
 <img src="https://github.com/downloads/omsai/journals/ringing_bleach.PNG"
  alt="ringing artifact" title="40us dwell time, confocal image" align="right" />
