@@ -1,21 +1,6 @@
 Synchronization for FRAPPA
 ==========================
 
-Backport FRAPPA systems
------------------------
-<img src="https://github.com/downloads/omsai/journals/ringing_bleach.PNG"
- alt="ringing artifact" title="40us dwell time, confocal image" align="right" />
-
-Metamorph's asynchronous acquisition projects the vibration "ringing" artifacts
-from the motorized microscope epi laser cube onto the bleach region.  If the
-laser dwell time is long enough, instead of ringing only thin streaks will
-appear above and below one edge of the bleach region.
-
-### Solution
-Use `_delay_for_illumination.jnl` to insert a short delay for each FRAPPA channel
-to surpress this "ringing".  Add it to the " Run journal when toggling active shutter"
-of each FRAPPA illumination.
-
 Multi-camera
 ------------
 To create a "Coordinate system setting" (i.e. bleach calibration) for each camera,
@@ -40,3 +25,18 @@ as follows:
     by updating the builtin `Device.Magnification.Setting`
 3.  Finally `_mda_pulse.jnl` action in the protocol will be able to override the
     "Coordinate system setting" with Device.Magnification.Setting
+
+Backport FRAPPA systems
+-----------------------
+<img src="https://github.com/downloads/omsai/journals/ringing_bleach.PNG"
+ alt="ringing artifact" title="40us dwell time, confocal image" align="right" />
+
+Metamorph's asynchronous acquisition projects the vibration "ringing" artifacts
+from the motorized microscope epi laser cube onto the bleach region.  If the
+laser dwell time is long enough, instead of ringing only thin streaks will
+appear above and below one edge of the bleach region.
+
+### Solution
+Use `_delay_for_illumination.jnl` to insert a short delay for each FRAPPA channel
+to surpress this "ringing".  Add it to the " Run journal when toggling active shutter"
+of each FRAPPA illumination.
