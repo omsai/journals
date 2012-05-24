@@ -41,6 +41,8 @@ Installation
     of the channel name like "Confocal 488" or "TIRF640"
 3.  Check "Run journal when changing illumination setting" for each laser
     illumination.
+4.  (Optional, but strongly recommended) Run "Show Values" button and setup
+    default laser values for all laser illuminations.
 
 User interaction
 ----------------
