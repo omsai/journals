@@ -11,11 +11,11 @@ Installation
 ------------
 1.  Install [Github for Windows](http://windows.github.com/)
 
-2.  Click "Clone in Windows" toward the top of this page.
+2.  Click "Clone in Windows" toward the top-left of this page.
 
 3.  Right-click on the newly downloaded repository > view in explorer
 
-4.  Copy directories as needed to Metamorph's journals directory, usually:
+4.  Copy folders as needed to Metamorph's journals directory, usually:
 ```
 C:\MM\app\mmproc\journals\
 ```
