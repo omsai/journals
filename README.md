@@ -20,4 +20,4 @@ Installation
 C:\MM\app\mmproc\journals\
 ```
 
-5.  Follow each folder's README instructions
+5.  Follow the folders' README instructions
