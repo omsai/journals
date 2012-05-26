@@ -22,7 +22,7 @@ as follows:
     journal to your camera selection button.
 2.  Have said camera selection button update the Magnification dropdown
     by updating the builtin `Device.Magnification.Setting`
-3.  Finally `_mda_pulse.jnl` action in the protocol will be able to override the
+3.  Finally `mda_pulse.jnl` action in the protocol will be able to override the
     "Coordinate system setting" with Device.Magnification.Setting
 
 Rear port FRAPPA systems
