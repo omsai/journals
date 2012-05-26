@@ -22,6 +22,5 @@ Installation
 C:\MM\app\mmproc\journals\
 ```
 
-5.  Follow the folders' README instructions.  Due to the Markdown format it is
-    better viewed either here, online, or navigating to the folder in the GitHub
-    desktop application
+5.  Setup instructions are in each folders' README.  Navigate to it either
+    here, online, or in the GitHub desktop application
