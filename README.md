@@ -11,7 +11,7 @@ Installation
 ------------
 1.  Install [Github for Windows](http://windows.github.com/)
 
-2.  Click "Clone in Windows" toward the top-left of this page.
+2.  Click "Clone in Windows" at the top-left of this page.
 
 3.  Right-click on the newly downloaded repository > view in explorer
 
@@ -19,3 +19,5 @@ Installation
 ```
 C:\MM\app\mmproc\journals\
 ```
+
+5.  Follow each folder's README instructions
