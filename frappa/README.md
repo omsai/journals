@@ -6,7 +6,7 @@ Multi-camera
 To calibrate more than one camera to use an objective for Targeted Illumination,
 mutiple Objective Magnifications need to be created.  Thus a microscope with
 a single "100x Apo TIRF" Objective Magnification would need to be replaced by
-camera-named magnifications e.g. "100x Confocal" and "100x Widefield"
+camera-named magnifications like "100x Confocal" and "100x Widefield"
 
 Unfortunately having multiple magnifications for same objective means Metamorph
 will no longer synchronize it's Magnification dropdown menu to match the automated
