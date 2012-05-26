@@ -1,5 +1,5 @@
-Adjust selected illumination laser intensity
-============================================
+Single button to adjust channel laser intensity
+===============================================
 
 Necessity
 ---------
@@ -28,9 +28,10 @@ Images and experiments will not show laser powers.
 
 Possible workarounds:
 
-1.  Append INI file information to the image or experiment "custom" metadata field
-    (assuming such a thing exists)
-2.  Copy the INI file to the location where the image or experiment files are saved
+1.  Append INI file information to the image or experiment "custom" metadata
+    field (assuming such a thing exists)
+2.  Copy the INI file to the location where the image or experiment files are
+    saved
 
 Installation
 ------------
@@ -43,9 +44,10 @@ Installation
     illumination.
 4.  (Optional, but required for next step) Test INI file writing by running
     "Set Intensity" created in step 1    
-5.  (Optional) Order the illuminations in a human readable format, otherwise settings
-    get added ad-hoc and it's difficult to read the file.  To do this, run "Show 
-    Values" button and set default laser key-value pairs for all laser illuminations.
+5.  (Optional) Order the illuminations in a human readable format, otherwise
+    settings get added ad-hoc and it's difficult to read the file.  To do this,
+    run "Show Values" button and set default laser key-value pairs for all
+    laser illuminations.
 
 User interaction
 ----------------
