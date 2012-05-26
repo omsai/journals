@@ -3,15 +3,14 @@ Synchronization for FRAPPA
 
 Multi-camera
 ------------
-To create a "Coordinate system setting" (i.e. bleach calibration) for each camera,
-an objective magnification needs to be created of the same objective named
-specifically for the camera.  So a microscope with a single "100x Apo TIRF"
-objective would need to be replaced by magnifications e.g. "100x left camera" and
-"100x right camera"
+To calibrate more than one camera to use an objective for Targeted Illumination,
+mutiple Objective Magnifications need to be created.  Thus a microscope with
+a single "100x Apo TIRF" Objective Magnification would need to be replaced by
+camera-named magnifications e.g. "100x Confocal" and "100x Widefield"
 
-Unfortunately having multiple calibrations for same objective means Metamorph
-will no longer change it's Magnification dropdown menu to match the automated
-microscope's position.  This requires you to often change both, the "Coordinate 
+Unfortunately having multiple magnifications for same objective means Metamorph
+will no longer synchronize it's Magnification dropdown menu to match the automated
+microscope's position.  In practise this requires you to change both, the "Coordinate 
 system setting" in the Targeted Illumination window as well as the Magnification
 dropdown!
 
