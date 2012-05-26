@@ -167,12 +167,11 @@ if __name__ == '__main__':
             with open(dir + sep + 'README.md', 'a') as f:
                 f.write(doc)
             print('... created')
+        elif match_result.group(0) == doc:
+            print('... up-to-date')
         else:
-            if match_result.group(0) == doc:
-                print('... up-to-date')
-            else:
-                with open(dir + sep + 'README.md', 'w') as f:
-                    f.write(match_result.string[:match_result.start(0)-1]
-                            + doc)
-                print('... updated')
+            with open(dir + sep + 'README.md', 'w') as f:
+                f.write(match_result.string[:match_result.start(0)-1]
+                        + doc)
+            print('... updated')
         print('')
