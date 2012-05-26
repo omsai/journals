@@ -1,11 +1,11 @@
-Quick Journals
+Andor Journals
 ==============
-Read online documentation and working Journal code.  The design decision process
-is explained for building more complex journal macros or improving these sets.
+Documentation and source code of journals for streamlining control of Andor
+hardware: FRAPPA, Mosaic, Micropoint, Laser Combiner
 
-Journals, being XML based, are not human-readable outside of Metamorph.  The
-parser `doc_jnl.py` generates Python-like source code from the XML for each
-directory's README.
+Journals, being XML based, are not human-readable outside of Metamorph.  To
+work around this the `doc_jnl.py` generates Python-like source code from the
+XML for each directory's README.
 
 Installation
 ------------
