@@ -4,7 +4,7 @@ Documentation and source code of journals for streamlining control of Andor
 hardware: FRAPPA, Mosaic, Micropoint, Laser Combiner
 
 Journals, being XML based, are not human-readable outside of Metamorph.  To
-work around this the `doc_jnl.py` generates Python-like source code from the
+work around this `doc_jnl.py` generates Python-like source code from the
 XML for each directory's README
 
 Installation
