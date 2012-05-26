@@ -23,5 +23,5 @@ C:\MM\app\mmproc\journals\
 ```
 
 5.  Follow the folders' README instructions.  Due to the Markdown format it is
-    better viewed either online or navigating to the folder in the GitHub
+    better viewed either here, online, or navigating to the folder in the GitHub
     desktop application
