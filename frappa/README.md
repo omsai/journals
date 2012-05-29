@@ -1,6 +1,24 @@
 Synchronization for FRAPPA
 ==========================
 
+Multi-Dimensional Acquisition (MDA)
+-----------------------------------
+### Necessity
+
+The "Targeted Illumination" > "Timelapse" experiment mode only allows single
+plane image acquisition.  MDA should be used instead since it is more flexible
+
+### Installation
+
+1.  Add button `save_regions.jnl` to the taskbar journal or drop-in toolbar
+
+2.  In MDA, enable "Run Journals" and add `mda_pulse.jnl`
+
+### User interaction
+
+Button: `Save Regions`
+> Set regions to be pulsed by drawing on a snapped image clicking this button
+
 Multi-camera
 ------------
 To calibrate more than one camera to use an objective for Targeted Illumination,
@@ -26,7 +44,7 @@ as follows:
     "Coordinate system setting" with Device.Magnification.Setting
 
 Rear port FRAPPA systems
------------------------
+------------------------
 <img src="https://github.com/downloads/omsai/journals/ringing_bleach.PNG"
  alt="ringing artifact" title="40us dwell time, confocal image" align="right" />
 
