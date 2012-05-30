@@ -10,7 +10,7 @@ plane image acquisition.  MDA should be used instead since it is more flexible
 
 ### Installation
 
-1.  Add button `save_regions.jnl` to the taskbar journal or drop-in toolbar
+1.  Add button `save_regions.jnl` to the journal taskbar or drop-in toolbar
 
 2.  In MDA, enable "Run Journals" and add `mda_pulse.jnl`
 
