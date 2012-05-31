@@ -1,5 +1,5 @@
-Synchronization for FRAPPA
-==========================
+Synchronization for FRAPPA or Mosaic
+====================================
 
 Multi-Dimensional Acquisition (MDA)
 -----------------------------------
