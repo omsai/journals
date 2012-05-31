@@ -9,18 +9,12 @@ XML for each directory's README
 
 Installation
 ------------
-1.  Install the [GitHub for Windows](http://windows.github.com/) desktop
-    application
+1.  [Download](journals/zipball/master) the zip file
 
-2.  Click "Clone in Windows" at the top-left of this page.
-
-3.  In the application, right-click on the newly downloaded repository > view
-    in explorer
-
-4.  Copy folders as needed to Metamorph's journals directory, usually:
+2.  Copy folders as needed to Metamorph's journals directory, usually:
 ```
 C:\MM\app\mmproc\journals\
 ```
 
-5.  Setup instructions are in each folders' README.  Navigate to it either
-    here, online, or in the GitHub desktop application
+3.  Browse instructions in each folders' README.  This is best viewed online
+    where the Markdown format is rendered
