@@ -35,16 +35,29 @@ Possible workarounds:
 
 Installation
 ------------
-1.  Add buttons `set_intensity.jnl` and `show_values.jnl` to the journal taskbar
+1.  The default device naming for the laser combiner is not intuitive:
+
+```
+ALC Laser 1 (488 nm)
+ALC Laser 1 power
+...
+```
+For each laser, in the administrator, rename these to:
+```
+488 Laser Intensity
+488 Laser Shutter
+...
+```
+2.  Add buttons `set_intensity.jnl` and `show_values.jnl` to the journal taskbar
     or drop-in toolbar
-2.  Rename all laser channels which this journal should operate on
+3.  Rename all laser channels which this journal should operate on
     have their laser wavelength to be edited set to the last 3 digits
     of the channel name like "Confocal 488" or "TIRF640"
-3.  Check "Run journal when changing illumination setting" for each laser
+4.  Check "Run journal when changing illumination setting" for each laser
     illumination.
-4.  (Optional, but required for next step) Test INI file writing by running
+5.  (Optional, but required for next step) Test INI file writing by running
     "Set Intensity" created in step 1    
-5.  (Optional) Order the illuminations in a human readable format, otherwise
+6.  (Optional) Order the illuminations in a human readable format, otherwise
     settings get added ad-hoc and it's difficult to read the file.  To do this,
     run "Show Values" button and set default laser key-value pairs for all
     laser illuminations.
