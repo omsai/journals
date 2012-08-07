@@ -1,7 +1,7 @@
-"Integrated Morphometry State File", Version 7.5
+"Integrated Morphometry State File", Version 7.6
 TRUE, FALSE
-46, 1, 1, 1, 1, 14, 1, "Total area", 1, "Intensity center X", 2, "Area", FALSE
-"HLNR X                   X                                                                                             ", "NOXXX    ", ""
+49, 1, 1, 1, 1, 14, 1, "Total area", 1, "Intensity center X", 2, "Area", FALSE
+"HLNR X                   X                                                                                                ", "NOXXX    ", ""
 FALSE, 3, 3, 3, 1, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE, FALSE, FALSE, FALSE, FALSE, TRUE, 48, 1, 255, 1
 "Total area", TRUE, TRUE, TRUE, 4, 2, 1, 1e+008
 "Pixel area", TRUE, FALSE, FALSE, 4, 0, 0, 1e+008
@@ -49,3 +49,6 @@ FALSE, 3, 3, 3, 1, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, TRUE, FALSE,
 "OD Relative Low Distance", FALSE, FALSE, FALSE, 4, 0, 0, 2
 "OD Relative Medium Distance", FALSE, FALSE, FALSE, 4, 0, 0, 2
 "OD Relative High Distance", FALSE, FALSE, FALSE, 4, 0, 0, 2
+"Minimum intensity", FALSE, FALSE, FALSE, 4, 0, 0, 1e+008
+"Maximum intensity", FALSE, FALSE, FALSE, 4, 0, 0, 1e+008
+"Intensity Std. Dev.", FALSE, FALSE, FALSE, 4, 0, 0, 1e+008
