@@ -38,10 +38,14 @@ class Journal(object):
         return '\n'.join(code)
     
     def _CodeBlock(self, node):
-        condition = node.getAttributeNode('Condition').nodeValue
         ret = ''
-        if condition == 'false':
-            ret += 'else:\n'
+        try:
+            condition = node.getAttributeNode('Condition').nodeValue
+            if condition == 'false':
+                ret += 'else:\n'
+        except AttributeError:
+            # NoneType returned from ForNextLoopEntry
+            pass
         for entry in node.childNodes:
             ret += ' ' * 4
             ret += getattr(self, '_' + entry.nodeName)(entry)
@@ -105,10 +109,21 @@ class Journal(object):
             ret += getattr(self, '_' + entry.nodeName)(entry)
         return ret
     
-    def _RunJournalEntry(self,node):
+    def _RunJournalEntry(self, node):
         ret = 'Run_Journal('
         ret += node.getAttributeNode('JournalName').nodeValue
         ret += ')'
+        return ret
+
+    def _ForNextLoopEntry(self, node):
+        ret = 'for ' + node.getAttributeNode('LoopVariable').nodeValue + \
+            ' in range(' + node.getAttributeNode('StartValue').nodeValue + ', ' + \
+            node.getAttributeNode('EndValue').nodeValue + '+1, ' + \
+            node.getAttributeNode('StepValue').nodeValue + '):'
+        for entry in node.childNodes:
+            ret += ',\n'
+            ret += ' ' * 4
+            ret += getattr(self, '_' + entry.nodeName)(entry)
         return ret
     
     description = property(_get_description)
